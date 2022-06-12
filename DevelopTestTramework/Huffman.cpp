@@ -339,7 +339,7 @@ void CHuffman::fixed(void)
 *   provided for each of the literal/length symbols, and for each of the
 *   distance symbols.
 *
-* - If a symbol is not used in the block, this is represented by a zero as
+* - If a symbol is not used in the block, this is represented by a zero
 *   as the code length.  This does not mean a zero-length code, but rather
 *   that no code should be created for this symbol.  There is no way in the
 *   deflate format to represent a zero-length code.
