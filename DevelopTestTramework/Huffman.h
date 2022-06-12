@@ -1,5 +1,8 @@
 #pragma once
 
+#include "LZ.h"
+#include "CIO.h"
+
 /* Types of blocks. */
 #define STORED 0
 #define FIXED 1
@@ -33,7 +36,7 @@
 class CHuffman
 {
 public:
-	CHuffman();
+	CHuffman(CLZ* pLZ,CIO *pCIO);
 	~CHuffman();
 
 	int getBits(int need);
@@ -50,6 +53,9 @@ private:
 	int decode(const struct huffman* h);
 	int codes(const struct huffman* lencode, const struct huffman* distcode);
 	int construct(struct huffman *h, const short *length, int n);
+
+	CLZ* pLZ;
+	CIO* pCIO;
 
 };
 

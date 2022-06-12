@@ -2,11 +2,14 @@
 #include "Huffman.h"
 #include "structs.h"
 
-CHuffman::CHuffman()
+CHuffman::CHuffman(CLZ *pLZ,CIO *pCIO)
 {
 	/* Do default initializations. */
 	bytesIn = byteLength = byteIndex = bitBuffer = bitCount = 0;
 	dataIn = NULL;
+
+	this->pLZ = pLZ;
+	this->pCIO = pCIO;
 }
 
 CHuffman::~CHuffman()
@@ -186,7 +189,9 @@ void CHuffman::stored(void)
 	/* ToDo */
 	/* Here we store the bytes to the destination. This is not implemented at this moment (1-30-2022). */
 
-
+	// 6-11-2022
+	pCIO->output(&dataIn[byteIndex], len);
+	byteIndex += len;
 
 	/* Adjust the values. */
 	byteIndex += len;
@@ -632,7 +637,7 @@ int CHuffman::codes(const struct huffman* lencode, const struct huffman* distcod
 			/* write out the literal */
 
 			// TODO: Output literal to LZ class.
-
+			pLZ->lit(symbol);
 		}
 		else if (symbol > 256)
 		{	/* length */
