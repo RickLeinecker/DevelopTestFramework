@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include "Huffman.h"
 
-static char test[] = "D:\\work\\Data Compression Dev\\TestData\\Data0.def";
+static char test[] = "D:\\work\\Data Compression Dev\\TestData\\Data18.def";
 
 // Look at:
 //   https://www.daylight.com/meetings/mug00/Sayle/gzip.html#:~:text=Stored%20blocks%20are%20allowed%20to,size%20of%20the%20gzip%20header.
@@ -38,7 +38,7 @@ void *load(const char *filePath, int *len)
 
 	/* Allocate the membory. */
 	void *ret = malloc(*len);
-	/* Checj to see if memory allocated. */
+	/* Check to see if memory allocated. */
 	if (ret == NULL)
 	{
 		/* Set len to 0. */
@@ -80,6 +80,12 @@ void main(int argc, char* argv[])
 	memcpy(&header, fileBuffer, sizeof(GZipHeader));
 
 	/* The plan is to overload the constructor with output options. */
-	CHuffman huff;
+	CLZ *lz = new CLZ();
+	unsigned char* pOutputBuffer = new unsigned char [100000];
+	int size = 100000;
+	CIO* io = new CIO( pOutputBuffer, size );
+	CHuffman huff( lz, io );
 	huff.decompress(&fileBuffer[sizeof(GZipHeader)], len - sizeof(GZipHeader) );
+	delete lz;
+	delete io;
 }

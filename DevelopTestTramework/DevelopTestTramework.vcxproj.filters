@@ -33,6 +33,9 @@
     <ClInclude Include="LZ.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CIO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -45,6 +48,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LZ.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CIO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
